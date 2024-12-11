@@ -31,7 +31,6 @@
             padding: 10px 20px;
             z-index: 1000;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             transition: all 0.5s ease;
@@ -55,7 +54,6 @@
             margin-right: 5px;
         }
 
-        /* Whelmed text style */
         .navbar .whelmed {
             font-size: 24px;
             font-weight: bold;
@@ -66,37 +64,109 @@
             border-radius: 5px;
         }
 
-        .navbar .nav-space {
-            margin-right: auto;
+        /* Navbar links (for desktop view) */
+        .navbar-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Main bubbles */
+        /* Dropdown menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Responsive navbar (mobile view) */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .navbar-links {
+                display: none;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar-links.active {
+                display: block;
+            }
+
+            .navbar a {
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .dropdown-content a {
+                text-align: center;
+                padding: 12px;
+            }
+
+            .burger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .burger div {
+                width: 25px;
+                height: 3px;
+                background-color: #333;
+                margin: 5px;
+            }
+        }
+
+        /* Burger menu (hamburger) */
+        .burger {
+            display: none;
+        }
+
+        /* Main bubble container */
         .container {
             position: relative;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 100px;
-            z-index: 1;
-        }
-
-        .outer-bubble {
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background-image: url('pngwing.com.png');
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 1;
+            flex-wrap: wrap;
         }
 
         .bubble {
-            background-image: url('pngwing.com.png');
+            background-image: url('pngwing.com.png'); /* Main bubble background */
             background-size: cover;
             border-radius: 50%;
             display: flex;
@@ -115,66 +185,58 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
-        /* Responsive Bubbles */
-        .bubble1 { width: 160px; height: 160px; left: 50%; top: 40%; transform: translate(-50%, -50%); }
-        .bubble2 { width: 140px; height: 140px; left: 70%; top: 60%; transform: translate(-50%, -50%); }
-        .bubble3 { width: 120px; height: 120px; left: 55%; top: 80%; transform: translate(-50%, -50%); }
-        .bubble4 { width: 180px; height: 180px; left: 30%; top: 50%; transform: translate(-50%, -50%); }
-        .bubble5 { width: 100px; height: 100px; left: 20%; top: 35%; transform: translate(-50%, -50%); }
-        .bubble6 { width: 140px; height: 140px; left: 40%; top: 70%; transform: translate(-50%, -50%); }
-        .bubble7 { width: 120px; height: 120px; left: 60%; top: 20%; transform: translate(-50%, -50%); }
+        .bubble1 { width: 160px; height: 160px; left: 20%; top: 30%; }
+        .bubble2 { width: 140px; height: 140px; left: 40%; top: 50%; }
+        .bubble3 { width: 120px; height: 120px; left: 60%; top: 70%; }
+        .bubble4 { width: 180px; height: 180px; left: 30%; top: 50%; }
+        .bubble5 { width: 100px; height: 100px; left: 20%; top: 35%; }
+        .bubble6 { width: 140px; height: 140px; left: 40%; top: 70%; }
+        .bubble7 { width: 120px; height: 120px; left: 60%; top: 20%; }
 
-        /* Keyframes for the floating animation */
+        /* Bubbles animation */
         @keyframes hover {
             0% { transform: translate(-50%, -50%) translateY(0); }
             50% { transform: translate(-50%, -50%) translateY(-10px); }
             100% { transform: translate(-50%, -50%) translateY(0); }
         }
 
-        /* Media Queries for Responsiveness */
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .outer-bubble {
-                width: 70vw;
-                height: 70vw;
-            }
-
-            .bubble {
-                font-size: 12px;
-            }
-
-            .bubble1 { width: 80px; height: 80px; }
-            .bubble2 { width: 70px; height: 70px; }
-            .bubble3 { width: 60px; height: 60px; }
-            .bubble4 { width: 100px; height: 100px; }
-            .bubble5 { width: 60px; height: 60px; }
+            .bubble1 { width: 100px; height: 100px; }
+            .bubble2 { width: 90px; height: 90px; }
+            .bubble3 { width: 80px; height: 80px; }
+            .bubble4 { width: 110px; height: 110px; }
+            .bubble5 { width: 80px; height: 80px; }
             .bubble6 { width: 100px; height: 100px; }
-            .bubble7 { width: 80px; height: 80px; }
+            .bubble7 { width: 90px; height: 90px; }
         }
+
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-links">
+            <a href="index.html" class="nav-space">
+                <img src="logo.jpeg" alt="Logo"> <!-- Logo Image -->
+                <span class="whelmed">Whelmed</span>
+            </a>
+            <a href="index.html">Home</a>
+            <a href="info.html">About</a>
+            <a href="donation.html">Donation</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <!-- Burger menu -->
+        <div class="burger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
-<!-- Navbar -->
-<div class="navbar">
-    <a href="index.html" class="nav-space">
-        <img src="logo.jpeg" alt="Logo"> <!-- Logo Image -->
-        <span class="whelmed">Whelmed</span>
-    </a>
-    <a href="index.html">Home</a>
-    <a href="info.html">About</a>
-    <a href="donation.html">Donation</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-</div>
-
-<!-- Bubble Container -->
-<div class="container">
-    <div class="outer-bubble">
+    <!-- Bubble Container -->
+    <div class="container">
         <div class="bubble bubble1" onclick="window.location.href='https://www.facebook.com/groups/213079185498534';">Staan Saam</div>
         <div class="bubble bubble2" onclick="location.href='donation.html';">Donate</div>
         <div class="bubble bubble3" onclick="location.href='info.html';">Info</div>
@@ -183,7 +245,13 @@
         <div class="bubble bubble6" onclick="location.href='blog.html';">Latest Blogs</div>
         <div class="bubble bubble7" onclick="window.location.href='contact.html';">Contact</div>
     </div>
-</div>
 
+    <script>
+        // Function to toggle the menu on mobile
+        function toggleMenu() {
+            const navbarLinks = document.querySelector('.navbar-links');
+            navbarLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
